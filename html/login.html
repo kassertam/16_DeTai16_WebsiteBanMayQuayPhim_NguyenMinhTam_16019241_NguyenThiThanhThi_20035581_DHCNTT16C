@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="../icon/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            var list = ["admin",]
+            $(".slideanim").each(function () {
+                var pos = $(this).offset().top;
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 500) {
+                    $(this).addClass("slide")
+                }
+                // else{
+                //     $(this).removeClass("slide")
+                // }
+            })
+        })
+        function User(tendangnhap,matkhau){
+            this.tendangnhap = tendangnhap
+            this.matkhau = matkhau
+        }
+        
+        var list = []
+            var user = {
+                tendn:'admin',
+                matkhau:'admin'
+            }
+            list.push(user)
+        $("#btnDangNhap").on("click",function(){
+            
+            // console.log(list[0].tendn)
+            var tendangnhap = $("#txtTenDN").val()
+            var matkhau = $("#txtMatKhau").val()
+            var rexTenDN = /^[A-Za-z]*$/ // cái này cho nhập chữ không cho nhập số, tao test cho m thấy
+            if(tendangnhap===""){
+                alert("Rỗng")
+                return false
+            }
+            if(matkhau===""){
+                alert("Rỗng")
+                return false
+            }
+            if(rexTenDN.test(tendangnhap)==false){
+                alert("Tên không được nhập số")
+                return false
+            }
+            for(var i = 0;i<list.length;i++){
+                if(list[i].tendn===tendangnhap && list[i].matkhau===matkhau){
+                    alert("Đăng nhập thành công")
+                    $("#modalLogin").modal("hide")
+                    return true
+                }
+            }
+            alert("Mật khẩu không đúng")
+            // $("#modalLogin").modal("hide")
+            return false
+        })
+        $("#btnDangKy").on("click",function(){
+            alert("link")
+            $("#modalRegister").modal("hide")
+        })
+    })
+    document.addEventListener("DOMContentLoaded", function () {
+        // make it as accordion for smaller screens
+        if (window.innerWidth < 992) {
+
+            // close all inner dropdowns when parent is closed
+            document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+                everydropdown.addEventListener('hidden.bs.dropdown', function () {
+                    // after dropdown is hidden, then find all submenus
+                    this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+                        // hide every submenu as well
+                        everysubmenu.style.display = 'none';
+                    });
+                })
+            });
+
+            document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+                element.addEventListener('click', function (e) {
+                    let nextEl = this.nextElementSibling;
+                    if (nextEl && nextEl.classList.contains('submenu')) {
+                        // prevent opening link if link needs to open dropdown
+                        e.preventDefault();
+                        if (nextEl.style.display == 'block') {
+                            nextEl.style.display = 'none';
+                        } else {
+                            nextEl.style.display = 'block';
+                        }
+
+                    }
+                });
+            })
+        }
+        // end if innerWidth
+    });
+
+
+</script>
+
+<body>
+    <nav class="navbar py-xl-0 navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler py-sm-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse py-sm-0" id="navbarNav">
+                <ul class="navbar-nav py-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../html/index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/intro.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="../html/product.html">Tất cả</a></li>
+
+                            <li><a class="dropdown-item" href="../html/productsony.html">Sony &raquo</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="../html/productsony.html">All Sony</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="../html/productsonychuyen.html">Sony chuyên nghiệp</a></li>
+                                    <li><a class="dropdown-item" href="../html/productsonycamtay.html">Sony cầm tay</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="../html/productblackmagic.html">Blackmagic</a></li>   
+                            <li><a class="dropdown-item" href="../html/productcanon.html">Canon</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="../html/contact.html">Liện hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="../html/voucher.html">Gói khuyến mãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"   href="../html/sitemap.html">Sitemap</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" data-bs-toggle="modal" data-bs-target="#modalLogin"><span
+                                class="fas fa-user"></span> Admin</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRegister"><span
+                                class="fas fa-sign-in-alt" aria-hidden="true"></span> Đăng
+                            xuất</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="../html/cart.html"><span class="fas fa-shopping-cart" aria-hidden="true"></span>
+                            3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Modal Login-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="col-12 login-card">
+                    <form id="login-form" class="col-lg-12" method="post">
+
+                        <!-- Logo -->
+                        <div class="col-lg-12 logo-kapsul">
+                            <img width="100" class="logo" src="https://selimdoyranli.com/cdn/material-form/img/logo.png"
+                                alt="Logo" />
+                        </div>
+                        <!-- #Logo  -->
+
+                        <div style="clear:both;"></div>
+
+
+                        <div class="group">
+                            <input type="text" required id="txtTenDN">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-user"></i><span class="span-input">Tên Đăng Nhập</span></label>
+                        </div>
+
+
+
+                        <div class="group">
+                            <input type="password" required id="txtMatKhau">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"><span class="span-input">Mật Khẩu</span></i></label>
+                        </div>
+
+
+
+                        <button type="button" class="giris-yap-buton" id="btnDangNhap">Đăng Nhập</button>
+
+
+                        <div class="forgot-and-create tab-menu">
+                            <a class="sifre-hatirlat-link" href="#">Quên mật khẩu?</a>
+                            <a class="hesap-olustur-link" href="#" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                data-bs-target="#modalRegister">Đăng ký ngay</a>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Login-->
+    <!-- Modal Register -->
+    <div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="col-12 login-card">
+                    <form id="register-form" class="col-lg-12">
+
+                        <!-- Logo -->
+                        <div class="col-lg-12 logo-kapsul">
+                            <img width="100" class="logo" src="https://selimdoyranli.com/cdn/material-form/img/logo.png"
+                                alt="Logo" />
+                        </div>
+                        <!-- #Logo-->
+
+                        <div style="clear:both;"></div>
+
+
+                        <div class="group">
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-user"></i><span class="span-input">Tên Đăng Nhập</span></label>
+                        </div>
+
+                        <div class="group">
+                            <input type="email" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="far fa-envelope"></i><span class="span-input">Email</span></label>
+                        </div>
+
+                        <div class="group">
+                            <input type="tel" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-phone-alt"></i><span class="span-input">Số Điện Thoại</span></label>
+                        </div>
+                        <div class="group">
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-map-marker-alt"></i><span class="span-input">Địa Chỉ</span></label>
+                        </div>
+
+                        <div class="group">
+                            <input type="password" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"><span class="span-input">Mật Khẩu</span></i></label>
+                        </div>
+                        <div class="group">
+                            <input type="password" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"></i><span class="span-input">Nhập Lại Mật Khẩu</span></label>
+                        </div>
+                        <button type="button" class="giris-yap-buton" id="btnDangKy">Đăng Ký</button>
+
+                        <div class="forgot-and-create tab-menu">
+                            <a class="sifre-hatirlat-link" href="#">Quên mật khẩu?</a>
+                            <a class="hesap-olustur-link" href="#" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                data-bs-target="#modalLogin">Đăng nhập ngay</a>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Register -->
+    <div class="jumbotron text-center text-white text-white text-shadow: 1px 1px 1px gray">
+        <h1>Nhóm 16</h1>
+        <p>Hài lòng của bạn - Phương châm chúng tôi</p>
+        <form class="form-check-inline">
+            <div class="input-group"><input type="text" class="form-control" size="50"
+                    placeholder="Nhập tên sản phẩm muốn tìm...">
+                <button type="button" class="btn btn-danger">Tìm kiếm</button>
+            </div>
+
+        </form>
+    </div>
+    <div id="slide" class="container-fluid  text-center bg-grey">
+        <h3 class="title-wthree text-center mb-sm-5 mb-4">
+            HOT<span class="mt-2 text-uppercase font-weight-bold">Sản Phẩm Nổi Bật Của Chúng Tôi</span></h3>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../img/product1.jpg" class="d-block w-100" height="600" width="1000" alt="..."
+                        style="object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Túi hàng hiệu</h5>
+                        <p>9.999.999 VNĐ</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/product2.jpg" class="d-block w-100" height="600" width="1000" alt="..."
+                        style="object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Túi hàng hiệu</h5>
+                        <p>9.999.999 VNĐ</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/product3.jpg" class="d-block w-100" height="600" width="1000" alt="..."
+                        style="object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Túi hàng hiệu</h5>
+                        <p>9.999.999 VNĐ</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../img/product4.jpg" class="d-block w-100" height="600" width="1000" alt="..."
+                        style="object-fit: cover;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Túi hàng hiệu</h5>
+                        <p>9.999.999 VNĐ</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <!-- Sản phẩm -->
+    <div class="team py-5" id="team">
+        <div class="container py-xl-5 py-lg-3">
+            <!-- heading title -->
+            <div class="text-center mb-lg-5 mb-4">
+                <h3 class="title-wthree text-center mb-sm-5 mb-4">
+                    Mẫu mới<span class="mt-2 text-uppercase font-weight-bold">Mẫu Túi Sách Mới Nhất</span></h3>
+            </div>
+            <!-- //heading title -->
+            <div class="row team-bottom slideanim">
+                <div class="col-lg-3 col-6 team-grid">
+                    <img src="../img/t1.jpg" class="img-fluid" alt="">
+                    <div class="caption">
+                        <div class="team-text">
+                            <h4>Túi sách hàng hiệu</h4>
+                            <p>2.999.999 VNĐ</p>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart f1" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 team-grid">
+                    <img src="../img/t2.jpg" class="img-fluid" alt="">
+                    <div class="caption">
+                        <div class="team-text">
+                            <h4>Túi sách hàng hiệu</h4>
+                            <p>2.999.999 VNĐ</p>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart f1" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 team-grid mt-lg-0 mt-4">
+                    <img src="../img/t3.jpg" class="img-fluid" alt="">
+                    <div class="caption">
+                        <div class="team-text">
+                            <h4>Túi sách hàng hiệu</h4>
+                            <p>2.999.999 VNĐ</p>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart f1" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6 team-grid  mt-lg-0 mt-4">
+                    <img src="../img/t4.jpg" class="img-fluid" alt="">
+                    <div class="caption">
+                        <div class="team-text">
+                            <h4>Túi sách hàng hiệu</h4>
+                            <p>2.999.999 VNĐ</p>
+                        </div>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-shopping-cart f1" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Sản phẩm -->
+
+
+    <!-- middle section -->
+    <div class="middle-w3l py-5">
+        <div class="container py-xl-5 py-lg-3">
+            <h3>Vươn xa thời trang du lịch thế giới</h3>
+            <p class="my-md-4 my-2">Đánh giá nhu cầu và lựa chọn của các bạn là trách nhiệm của chúng tôi</p>
+            <a href="../html/contact.html" class="btn button-3 button-style mt-5">Liên hệ chúng tôi</a>
+        </div>
+    </div>
+    <!-- //middle section -->
+    <div class="middle-w3l py-5">
+        <div id="voucher" class="container-fluid text-center bg-grey">
+            <h3 class="title-wthree text-center mb-sm-5 mb-4">
+                Voucher<span class="mt-2 text-uppercase font-weight-bold">Chương Trình Khuyến Mãi</span></h3>
+            <div class="row text-center slideanim">
+                <div class="col-sm-4">
+                    <div class="img-thumbnail">
+                        <img src="../img/voucher1.jpg" alt="Voucher" width="380" height="300"
+                            style="object-fit: cover;">
+                        <p style="color: black;"><strong>Giảm giá 50%</strong></p>
+                        <p style="color: rgb(46, 45, 45);">Giảm giá 50% các mặt hàng</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="img-thumbnail">
+                        <img src="../img/voucher2.png" alt="Voucher" width="380" height="300"
+                            style="object-fit: cover;">
+                        <p style="color: black;"><strong>Giảm giá 50%</strong></p>
+                        <p style="color: rgb(46, 45, 45);">Giảm giá 50% các mặt hàng</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="img-thumbnail">
+                        <img src="../img/voucher3.png" alt="Voucher" width="380" height="300"
+                            style="object-fit: cover;">
+                        <p style="color: black;"><strong>Giảm giá 50%</strong></p>
+                        <p style="color: rgb(46, 45, 45);">Giảm giá 50% các mặt hàng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row f-bg-w3l">
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h2>Thông Tin <span>Liện Hệ</span></h2>
+                    <ul class="con_inner_text">
+                        <li><span class="fa fa-map-marker" aria-hidden="true"></span>12 Nguyễn Văn Bảo, Phường 4, Gò
+                            Vấp, Thành phố Hồ Chí
+                            Minh</li>
+                        <li><span class="far fa-envelope f1" aria-hidden="true"></span> <a
+                                href="mailto:info@example.com">info@example.com</a></li>
+                        <li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+                    </ul>
+
+                    <ul class="social_agileinfo">
+                        <li><a href="#" class="w3_facebook"><i class="fab fa-facebook-f f1"></i></a></li>
+                        <li><a href="#" class="w3_twitter"><i class="fab fa-twitter f1"></i></a></li>
+                        <li><a href="#" class="w3_instagram"><i class="fab fa-instagram f1"></i></a></li>
+                        <li><a href="#" class="w3_google"><i class="fab fa-google-plus f1"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h2>Theo Dõi <span>Bản Tin</span></h2>
+                    <p>Bằng cách đăng ký vào danh sách gửi thư của chúng tôi, bạn sẽ luôn nhận được tin tức mới nhất từ
+                        ​​chúng tôi.</p>
+                    <form action="#" method="post">
+                        <input type="email" name="Email" placeholder="Nhập địa chỉ email của bạn..." required="">
+                        <button class="btn1"><i class="far fa-envelope f1" aria-hidden="true"></i></button>
+                        <div class="clearfix"> </div>
+                    </form>
+                </div>
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h3>Đối Tác <span>Hiện Tại</span></h3>
+                    <ul class="con_inner_text midimg">
+                        
+                        <li><a href="#"><img height="50" width="50" src="../img/html5.jpg" alt="" class="img-responsive" /></a></li>
+                        <li><a href="#"><img height="50" width="50" src="../img/hyindai.png" alt="" class="img-responsive" /></a></li>
+                        <li><a href="#"><img height="50" width="50" src="../img/firefox.png" alt="" class="img-responsive" /></a></li>
+                        
+                    </ul>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <p class="copyright">© 2021 Travel' Camera. All Rights Reserved | Cover by <a href="../html/intro.html" target="_blank">Thanh Thi - Minh Tâm</a> <a class="nav-link" href="../html/sitemap.html">Sitemap</a> </p>
+    </div>
+    <!-- footer -->
+    <script>
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 50) {
+                $('nav').addClass('shrink');
+            } else {
+                $('nav').removeClass('shrink');
+            }
+        });
+    </script>
+    <!-- <script src="../js/SmoothScroll.min.js"></script> -->
+    <!-- <script src="../js/easing.js"></script>
+    <script src="../js/look.js"></script>
+    <script src="../js/carousel.js"></script> -->
+</body>
+
+</html>

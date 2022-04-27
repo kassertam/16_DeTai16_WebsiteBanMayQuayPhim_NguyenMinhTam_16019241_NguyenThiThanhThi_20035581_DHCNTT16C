@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="../icon/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <!-- <script src="../js/authen.js"></script> -->
+</head>
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            $(".slideanim").each(function () {
+                var pos = $(this).offset().top;
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 600) {
+                    $(this).addClass("slide")
+                }
+            })
+        })
+        function User(tendangnhap, matkhau) {
+            this.tendangnhap = tendangnhap
+            this.matkhau = matkhau
+        }
+
+        var list = []
+        var user = {
+            tendn: 'admin',
+            matkhau: 'admin'
+        }
+        list.push(user)
+        $("#search").click(function () {
+            document.location.href = "../html/product.html"
+        })
+        //copy nhớ thêm id vào input ở mỗi page
+        $("#btnDangNhap").on("click", function () {
+
+            // console.log(list[0].tendn)
+            var tendangnhap = $("#txtTenDN").val()
+            var matkhau = $("#txtMatKhau").val()
+            //trên này còn mật khẩu copy dưới lên hộ t 
+            // sửa alert lại
+            var rexTenDN = /^[A-Za-z]*$/ // cái này cho nhập chữ không cho nhập số, tao test cho m thấy
+            if (tendangnhap === "") {
+                alert("Rỗng")
+                return false
+            }
+            if (matkhau === "") {
+                alert("Rỗng")
+                return false
+            }
+            if (rexTenDN.test(tendangnhap) == false) {
+                alert("Tên không được nhập số")
+                return false
+            }
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].tendn === tendangnhap && list[i].matkhau === matkhau) {
+                    alert("Đăng nhập thành công")
+                    $("#modalLogin").modal("hide")
+                    window.location.replace("../")
+                    return true
+                }
+            }
+            alert("Mật khẩu không đúng")
+
+            // $("#modalLogin").modal("hide")
+            return false
+        })
+        $("#btnDangKy").on("click", function () {
+            var tendn = $("#txtRegisTenDN").val()
+            var email = $("#txtRegisEmail").val()
+            var sdt = $("#txtRegisSDT").val()
+            var diachi = $("#txtRegisDiaChi").val()
+            var matkhau = $("#txtRegisMatKhau").val()
+            var rematkhau = $("#txtRegisReMatKhau").val()
+            //hàm kiểm tra dữ liệu nhập - biểu thức chính quy
+            var regmatkhau = /^[A-Za-z0-9]{6,13}$/ //gồm chữ và số gồm từ 6-13 kí tự
+            var regsdt = /^0+[0-9]{10}$/ //bắt đầu bằng 0 và gồm 11 số
+            var regemail = /^[A-za-z0-9]{6-13}@gmail.com$/ //gồm 6-13 kí tự trước @gmail.com 
+
+            //Còn tên đăng nhập,   
+            if (tendn === "") {
+                alert("Tên đăng nhập không được rỗng")
+                return false
+            }
+            if (email === "") {
+                alert("Email không được rỗng")
+                return false
+            }
+            if (regemail.test(email) != true) {
+                alert("Email gồm 6-13 kí tự số hoặc chữ trước @gmail.com")
+                return false
+            }
+            if (sdt === "") {
+                alert("Số điện thoại không được rỗng")
+                return false
+            }
+            if (regsdt.test(sdt) != true) {
+                alert("Số điện thoại bắt đầu bằng 0 và gồm 11 số")
+                return false
+            }
+            if (diachi === "") {
+                alert("Địa chỉ không được rỗng")
+                return false
+            }
+            if (matkhau === "") {
+                alert("Mật khẩu không được rỗng")
+                return false
+            }
+            if (regmatkhau.test(matkhau) != true) {
+                alert("Mật khẩu gồm chữ hoặc số từ 6 đến 13 kí tự")
+                return false
+            }
+            if (rematkhau === "") {
+                alert("Chưa nhập lại mật khẩu")
+                return false
+            }
+            if (matkhau != rematkhau) {
+                alert("Nhập lại mật khẩu không đúng")
+                return false
+            }
+            var user = {
+                tendn: tendn,
+                matkhau: matkhau,
+                email: email,
+                sdt: sdt,
+                diachi: diachi,
+                rematkhau: rematkhau
+            }
+            list.push(user)
+            alert("Đăng ký thành công!")
+            $("#modalRegister").modal("hide")
+            $("#txtRegisTenDN").val("")
+            $("#txtRegisEmail").val("")
+            $("#txtRegisSDT").val("")
+            $("#txtRegisDiaChi").val("")
+            $("#txtRegisMatKhau").val("")
+            $("#txtRegisReMatKhau").val("")
+            return true
+        })
+        function User(tendangnhap, matkhau) {
+            this.tendangnhap = tendangnhap
+            this.matkhau = matkhau
+        }
+
+        var list = []
+        var user = {
+            tendn: 'admin1',
+            matkhau: 'admin1'
+        }
+        list.push(user)
+
+
+        $("#btnDangNhap").on("click", function () {
+
+            // console.log(list[0].tendn)
+            var tendangnhap = $("#txtTenDN").val()
+            var matkhau = $("#txtMatKhau").val()
+
+            // sửa alert lại
+            var rexTenDN = /^[A-Za-z0-9]{6,13}$/ // cái này cho nhập chữ không cho nhập số
+            var regmatkhau = /^[A-Za-z0-9]{6,13}$/
+            if (tendangnhap === "") {
+                alert("Tên đăng nhập không được rỗng")
+                return false
+            }
+            if (matkhau === "") {
+                alert("Mật khẩu không được rỗng")
+                return false
+            }
+            if (regmatkhau.test(matkhau) != true) {
+                alert("Mật khẩu gồm chữ hoặc số từ 6 đến 13 kí tự")
+                return false
+            }
+            if (rexTenDN.test(tendangnhap) == false) {
+                alert("Tên đăng nhập gồm từ 6 đến 13 kí tự chữ hoặc số")
+                return false
+            }
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].tendn === tendangnhap && list[i].matkhau === matkhau) {
+                    alert("Đăng nhập thành công")
+                    $("#modalLogin").modal("hide")
+                    $("#txtTenDN").val("")
+                    $("#txtMatKhau").val("")
+                    return true
+                }
+            }
+            alert("Mật khẩu không đúng")
+
+            // $("#modalLogin").modal("hide")
+            return false
+        })
+        $("#btnDangKy").on("click", function () {
+            var tendn = $("#txtRegisTenDN").val()
+            var email = $("#txtRegisEmail").val()
+            var sdt = $("#txtRegisSDT").val()
+            var diachi = $("#txtRegisDiaChi").val()
+            var matkhau = $("#txtRegisMatKhau").val()
+            var rematkhau = $("#txtRegisReMatKhau").val()
+            //hàm kiểm tra dữ liệu nhập - biểu thức chính quy
+            var regmatkhau = /^[A-Za-z0-9]{6,13}$/ //gồm chữ và số gồm từ 6-13 kí tự
+            var regsdt = /^0+[0-9]{10}$/ //bắt đầu bằng 0 và gồm 11 số
+            var regemail = /^[A-za-z0-9]{6,13}@gmail.com$/ //gồm 6-13 kí tự trước @gmail.com 
+            var rexTenDN = /^[A-Za-z0-9]{6,13}$/
+            //Còn tên đăng nhập,   
+            if (tendn === "") {
+                alert("Tên đăng nhập không được rỗng")
+                return false
+            }
+            if (rexTenDN.test(tendn) == false) {
+                alert("Tên đăng nhập gồm từ 6 đến 13 kí tự chữ hoặc số")
+                return false
+            }
+            if (email === "") {
+                alert("Email không được rỗng")
+                return false
+            }
+            if (regemail.test(email) != true) {
+                alert("Email gồm 6-13 kí tự số hoặc chữ trước @gmail.com")
+                return false
+            }
+            if (sdt === "") {
+                alert("Số điện thoại không được rỗng")
+                return false
+            }
+            if (regsdt.test(sdt) != true) {
+                alert("Số điện thoại bắt đầu bằng 0 và gồm 11 số")
+                return false
+            }
+            if (diachi === "") {
+                alert("Địa chỉ không được rỗng")
+                return false
+            }
+            if (matkhau === "") {
+                alert("Mật khẩu không được rỗng")
+                return false
+            }
+            if (regmatkhau.test(matkhau) != true) {
+                alert("Mật khẩu gồm chữ hoặc số từ 6 đến 13 kí tự")
+                return false
+            }
+            if (rematkhau === "") {
+                alert("Chưa nhập lại mật khẩu")
+                return false
+            }
+            if (matkhau != rematkhau) {
+                alert("Nhập lại mật khẩu không đúng")
+                return false
+            }
+            var user = {
+                tendn: tendn,
+                matkhau: matkhau,
+                email: email,
+                sdt: sdt,
+                diachi: diachi,
+                rematkhau: rematkhau
+            }
+            list.push(user)
+            alert("Đăng ký thành công!")
+            $("#modalRegister").modal("hide")
+            $("#txtRegisTenDN").val("")
+            $("#txtRegisEmail").val("")
+            $("#txtRegisSDT").val("")
+            $("#txtRegisDiaChi").val("")
+            $("#txtRegisMatKhau").val("")
+            $("#txtRegisReMatKhau").val("")
+            return true
+        })
+    })
+    document.addEventListener("DOMContentLoaded", function () {
+        // make it as accordion for smaller screens
+        if (window.innerWidth < 992) {
+
+            // close all inner dropdowns when parent is closed
+            document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+                everydropdown.addEventListener('hidden.bs.dropdown', function () {
+                    // after dropdown is hidden, then find all submenus
+                    this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+                        // hide every submenu as well
+                        everysubmenu.style.display = 'none';
+                    });
+                })
+            });
+
+            document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+                element.addEventListener('click', function (e) {
+                    let nextEl = this.nextElementSibling;
+                    if (nextEl && nextEl.classList.contains('submenu')) {
+                        // prevent opening link if link needs to open dropdown
+                        e.preventDefault();
+                        if (nextEl.style.display == 'block') {
+                            nextEl.style.display = 'none';
+                        } else {
+                            nextEl.style.display = 'block';
+                        }
+
+                    }
+                });
+            })
+        }
+        // end if innerWidth
+    });
+</script>
+
+<body>
+    <nav class="navbar py-xl-0 navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler py-sm-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse py-sm-0" id="navbarNav">
+                <a class="navbar-brand " href="../html/index.html"><img width="100" height="100"
+                        src="../img/T & T.png" /></a>
+                <ul class="navbar-nav py-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="../html/index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../html/intro.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="../html/product.html">Tất cả</a></li>
+
+                            <li><a class="dropdown-item" href="../html/productsony.html">Sony &raquo</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="../html/productsony.html">All Sony</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="../html/productsonychuyen.html">Sony chuyên nghiệp</a></li>
+                                    <li><a class="dropdown-item" href="../html/productsonycamtay.html">Sony cầm tay</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item" href="../html/productblackmagic.html">Blackmagic</a></li>   
+                            <li><a class="dropdown-item" href="../html/productcanon.html">Canon</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="../html/contact.html">Liện hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="../html/voucher.html">Gói khuyến mãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/sitemap.html">Sitemap</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" data-bs-toggle="modal" data-bs-target="#modalLogin"><span
+                                class="fas fa-user"></span> Đăng nhập</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRegister"><span
+                                class="fas fa-sign-in-alt" aria-hidden="true"></span> Đăng
+                            ký</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="../html/cart.html"><span class="fas fa-shopping-cart"
+                                aria-hidden="true"></span>
+                            3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Modal Login-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="col-12 login-card">
+                    <form id="login-form" class="col-lg-12" method="post">
+
+                        <!-- Logo -->
+                        <div class="col-lg-12 logo-kapsul">
+                            <img width="100" class="logo" src="../img/logo.png" alt="Logo" />
+                        </div>
+                        <!-- #Logo  -->
+
+                        <div style="clear:both;"></div>
+
+
+                        <div class="group">
+                            <input type="text" required id="txtTenDN">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-user"></i><span class="span-input">Tên Đăng Nhập</span></label>
+                        </div>
+
+
+
+                        <div class="group">
+                            <input type="password" required id="txtMatKhau">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"><span class="span-input">Mật Khẩu</span></i></label>
+                        </div>
+
+
+
+                        <button type="button" class="giris-yap-buton" id="btnDangNhap">Đăng Nhập</button>
+
+
+                        <!-- <div class="forgot-and-create tab-menu">
+                            <a class="sifre-hatirlat-link" href="#">Quên mật khẩu?</a>
+                            <a class="hesap-olustur-link" href="#" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                data-bs-target="#modalRegister">Đăng ký ngay</a>
+                        </div> -->
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Login-->
+    <!-- Modal Register -->
+    <div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="col-12 login-card">
+                    <form id="register-form" class="col-lg-12">
+
+                        <!-- Logo -->
+                        <div class="col-lg-12 logo-kapsul">
+                            <img width="100" class="logo" src="../img/logo.png" alt="Logo" />
+                        </div>
+                        <!-- #Logo-->
+
+                        <div style="clear:both;"></div>
+
+
+                        <div class="group">
+                            <input type="text" required id="txtRegisTenDN">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-user"></i><span class="span-input">Tên Đăng Nhập</span></label>
+
+                        </div>
+                        <div class="group">
+                            <input type="text" required id="txtRegisEmail">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-user"></i><span class="span-input">Email</span></label>
+
+                        </div>
+
+                        <div class="group">
+                            <input type="tel" required id="txtRegisSDT">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-phone-alt"></i><span class="span-input">Số Điện Thoại</span></label>
+                        </div>
+                        <div class="group">
+                            <input type="text" required id="txtRegisDiaChi">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-map-marker-alt"></i><span class="span-input">Địa Chỉ</span></label>
+                        </div>
+
+                        <div class="group">
+                            <input type="password" required id="txtRegisMatKhau">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"><span class="span-input">Mật Khẩu</span></i></label>
+                        </div>
+                        <div class="group">
+                            <input type="password" required id="txtRegisReMatKhau">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"></i><span class="span-input">Nhập Lại Mật Khẩu</span></label>
+                        </div>
+                        <button type="button" class="giris-yap-buton" id="btnDangKy">Đăng Ký</button>
+
+                        <!-- <div class="forgot-and-create tab-menu">
+                            <a class="sifre-hatirlat-link" href="#">Quên mật khẩu?</a>
+                            <a class="hesap-olustur-link" href="#" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                data-bs-target="#modalLogin">Đăng nhập ngay</a>
+                        </div> -->
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Register -->
+    <div class="jumbotron text-center text-white text-white text-shadow: 1px 1px 1px gray">
+        <h1>Nhóm 16</h1>
+        <p>Hài lòng của bạn - Phương châm chúng tôi</p>
+        <form class="form-check-inline">
+            <div class="input-group"><input type="text" class="form-control" size="50"
+                    placeholder="Nhập tên sản phẩm muốn tìm...">
+                <button type="button" class="btn btn-danger" id="search">Tìm kiếm</button>
+            </div>
+
+        </form>
+    </div>
+    <div id="about" class="container-fluid bg-grey slide">
+        <div class="row">
+            <div class="col-sm-8 ">
+                <h2>Giới thiệu Nhóm 16</h2><br>
+                <h4>Với sự phát triển mạnh mẽ của internet, công nghệ thông tin cùng với sự lớn mạnh của ngành thương mại điện tử nên mỗi doanh nghiệp cần có một website bán hàng giúp đẩy mạnh hoạt động mua bán, quảng bá sản phẩm, thu hút khách hàng tiềm năng.
+
+                    <br> <br> Theo một thống kê mới nhất thì hiện nay Việt Nam có khoảng 41 triệu người dùng internet năm 2021, chiếm khoảng 45% dân số cả nước trong đó phần lớn là những đối tượng trẻ có nhu cầu mua sắm cao. Hơn nữa, hiện nay xu hướng online đang ngày càng phát triển và được nhiều người sử dụng mua hàng. Có khoảng 1/3 dân số sử dụng internet để tìm kiếm, tra cứu thông tin về các dịch vụ, sản phẩm.
+                    <br> <br> Chính vì vậy, khi có một website bán hàng, doanh nghiệp bạn đã thu hút được thêm một lượng khách hàn trên mạng internet. Nếu không có website thì bạn đã mất đi một cơ hội bán hàng và nhường cơ hội đó cho đối thủ.
+                    </h4><br>
+                <h4><strong>Nhóm 16</strong></h4>
+                <p>20035581 - Nguyễn Thị Thanh Thi</p>
+                <p>16019241 - Nguyễn Minh Tâm</p><br>
+                <a href="../html/contact.html"> <button class="btn btn-outline-secondary btn-lg">Liên hệ chúng
+                        tôi</button></a>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="img-thumbnail"> <img class="logo" src="../img/logo-intro.png" height="300px" width="400px">
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row f-bg-w3l">
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h2>Thông Tin <span>Liện Hệ</span></h2>
+                    <ul class="con_inner_text">
+                        <li><span class="fa fa-map-marker" aria-hidden="true"></span>12 Nguyễn Văn Bảo, Phường 4, Gò
+                            Vấp, Thành phố Hồ Chí
+                            Minh</li>
+                        <li><span class="far fa-envelope f1" aria-hidden="true"></span> <a
+                                href="mailto:info@example.com">info@example.com</a></li>
+                        <li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+                    </ul>
+
+                    <ul class="social_agileinfo">
+                        <li><a href="#" class="w3_facebook"><i class="fab fa-facebook-f f1"></i></a></li>
+                        <li><a href="#" class="w3_twitter"><i class="fab fa-twitter f1"></i></a></li>
+                        <li><a href="#" class="w3_instagram"><i class="fab fa-instagram f1"></i></a></li>
+                        <li><a href="#" class="w3_google"><i class="fab fa-google-plus f1"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h2>Theo Dõi <span>Bản Tin</span></h2>
+                    <p>Bằng cách đăng ký vào danh sách gửi thư của chúng tôi, bạn sẽ luôn nhận được tin tức mới nhất từ
+                        ​​chúng tôi.</p>
+                    <form action="#" method="post">
+                        <input type="email" name="Email" placeholder="Nhập địa chỉ email của bạn..." required="">
+                        <button class="btn1"><i class="far fa-envelope f1" aria-hidden="true"></i></button>
+                        <div class="clearfix"> </div>
+                    </form>
+                </div>
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h3>Đối tác <span>Hiện tại</span></h3>
+                    <ul class="con_inner_text midimg">
+                        
+                        <li><a href="#"><img height="50" width="50" src="../img/html5.jpg" alt="" class="img-responsive" /></a></li>
+                        <li><a href="#"><img height="50" width="50" src="../img/hyindai.png" alt="" class="img-responsive" /></a></li>
+                        <li><a href="#"><img height="50" width="50" src="../img/firefox.png" alt="" class="img-responsive" /></a></li>
+                        
+                    </ul>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <p class="copyright">© 2021 Travel' Camera. All Rights Reserved | Design by <a href="../html/intro.html" target="_blank">Minh
+                Tấn - Minh Tâm</a> <a class="nav-link" href="../html/sitemap.html">Sitemap</a> </p>
+    </div>
+    <!-- footer -->
+</body>
+
+</html>

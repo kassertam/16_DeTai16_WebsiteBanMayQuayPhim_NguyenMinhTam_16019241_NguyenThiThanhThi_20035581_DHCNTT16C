@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link href="../icon/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style1.css" rel="stylesheet">
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            $(".slideanim").each(function () {
+                var pos = $(this).offset().top;
+                var winTop = $(window).scrollTop();
+                if (pos < winTop + 500) {
+                    $(this).addClass("slide")
+                }
+                // else{
+                //     $(this).removeClass("slide")
+                // }
+            })
+        })
+        $('#button-submit').click(function () {
+            var name = $("input[name='name']").val();
+            var email = $("input[name='email']").val();
+            var comment = $("textarea[name='comment']").val();
+            if (name == "") {
+                alert("Tên không được rỗng")
+            } else {
+                if (email == "") {
+                    alert("Email không được rỗng")
+                } else {
+                    if (comment == "") {
+                        alert("Nội dung không được rỗng")
+                    } else {
+
+                        var comment_tag = '<div class="media response-info"><div class="media-left response-text-left"><a href="#"><img src="../img/t1.jpg" alt="" height="75" width="75"></a></div><div class="media-body response-text-right"><h6>' + name + ' <span><a href="#">' + email + '</a></h6><p>' + comment + '</p><p style="color: #F26649;">Jul 22, 2016</p></div> <div class="clearfix"> </div></div>';
+                        $('#list-comment').prepend(comment_tag);
+                        $("input[name='name']").val("");
+                        $("input[name='email']").val("");
+                        $("textarea[name='comment']").val("");
+                    }
+                }
+            }
+
+
+        })
+    })
+    document.addEventListener("DOMContentLoaded", function () {
+        // make it as accordion for smaller screens
+        if (window.innerWidth < 992) {
+
+            // close all inner dropdowns when parent is closed
+            document.querySelectorAll('.navbar .dropdown').forEach(function (everydropdown) {
+                everydropdown.addEventListener('hidden.bs.dropdown', function () {
+                    // after dropdown is hidden, then find all submenus
+                    this.querySelectorAll('.submenu').forEach(function (everysubmenu) {
+                        // hide every submenu as well
+                        everysubmenu.style.display = 'none';
+                    });
+                })
+            });
+
+            document.querySelectorAll('.dropdown-menu a').forEach(function (element) {
+                element.addEventListener('click', function (e) {
+                    let nextEl = this.nextElementSibling;
+                    if (nextEl && nextEl.classList.contains('submenu')) {
+                        // prevent opening link if link needs to open dropdown
+                        e.preventDefault();
+                        if (nextEl.style.display == 'block') {
+                            nextEl.style.display = 'none';
+                        } else {
+                            nextEl.style.display = 'block';
+                        }
+
+                    }
+                });
+            })
+        }
+        // end if innerWidth
+    });
+
+
+</script>
+
+<body>
+    <nav class="navbar py-xl-0 navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler py-sm-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse py-sm-0" id="navbarNav">
+                <ul class="navbar-nav py-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../html/index.html">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/intro.html">Giới thiệu</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href="../html/product.html">Tất cả</a></li>
+                            <li><a class="dropdown-item">Balo &raquo</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="../html/product-balo-nam.html">Balo Du Lịch
+                                            Nam</a></li>
+                                    <li><a class="dropdown-item" href="../html/product-balo-nu.html">Balo Du Lịch Nữ</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="../html/product-balo-giare.html">Balo Du Lịch Giá
+                                            Rẻ</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item">Cặp túi &raquo</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="../html/product-tuidulich.html">Túi du lịch</a>
+                                    </li>
+                                    <li><a class="dropdown-item">Túi đeo chéo &raquo;</a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="../html/product-tuideocheo-nu.html">Túi
+                                                    chéo nữ</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-tuideocheo-nam.html">Túi
+                                                    chéo nam</a></li>
+
+
+                                        </ul>
+                                    </li>
+                                    <li><a class="dropdown-item">Túi chống sốc &raquo; </a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="../html/product-tuichongsoc.html">Túi
+                                                    chống sốc 10-11 inch</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-tuichongsoc.html">Túi
+                                                    chống sốc 12.3 inch</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-tuichongsoc.html">Túi
+                                                    chống sốc 14.3 inch</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-tuichongsoc.html">Túi
+                                                    chống sốc 15.3 inch</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-tuichongsoc.html">Túi
+                                                    chống sốc 16.3 inch</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-tuichongsoc.html">Túi
+                                                    chống sốc 17.3 inch</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="dropdown-item" href="../html/product-tuichongsoc.html">Túi Ipad</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="../html/product-tuicankeo.html">Túi cần kéo</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="dropdown-item">Vali &raquo</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="../html/product-vali-keo.html">Vali kéo</a></li>
+                                    <li><a class="dropdown-item">Vali du lịch &raquo</a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item" href="../html/product-vali-dulich.html">Vali du
+                                                    lịch giá rẻ</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-vali-dulich.html">Vali du
+                                                    lịch cao cấp</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-vali-dulich.html">Vali du
+                                                    lịch đẹp</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-vali-dulich.html">Vali du
+                                                    lịch trip</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-vali-dulich.html">Vali du
+                                                    lịch Sekos</a></li>
+                                            <li><a class="dropdown-item" href="../html/product-vali-dulich.html">Vali du
+                                                    lịch thời trang</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="dropdown-item" href="../html/product-vali-xachtay.html">Vali xách
+                                            tay</a></li>
+                                    <li><a class="dropdown-item">Vali kéo chính hãng &raquo</a>
+                                        <ul class="submenu dropdown-menu">
+                                            <li><a class="dropdown-item"
+                                                    href="../html/product-vali-keochinhhang.html">Vali Verage</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="../html/product-vali-keochinhhang.html">Vali Odin</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="../html/product-vali-keochinhhang.html">Vali trip</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="../html/product-vali-keochinhhang.html">Vali Mikkor</a></li>
+                                            <li><a class="dropdown-item"
+                                                    href="../html/product-vali-keochinhhang.html">Vali Sekos</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="dropdown-item" href="../html/product-vali-vai.html">Vali vãi</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="../html/contact.html">Liện hệ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="../html/contact.html">Gói khuyến mãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Khác</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" data-bs-toggle="modal" data-bs-target="#modalLogin"><span
+                                class="fas fa-user"></span> Đăng nhập</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRegister"><span
+                                class="fas fa-sign-in-alt" aria-hidden="true"></span> Đăng
+                            ký</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="../html/cart.html"><span class="fas fa-shopping-cart"
+                                aria-hidden="true"></span>
+                            Trống</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Modal Login-->
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="col-12 login-card">
+                    <form id="login-form" class="col-lg-12" method="post">
+
+                        <!-- Logo -->
+                        <div class="col-lg-12 logo-kapsul">
+                            <img width="100" class="logo" src="https://selimdoyranli.com/cdn/material-form/img/logo.png"
+                                alt="Logo" />
+                        </div>
+                        <!-- #Logo  -->
+
+                        <div style="clear:both;"></div>
+
+
+                        <div class="group">
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-user"></i><span class="span-input">Tên Đăng Nhập</span></label>
+                        </div>
+
+
+
+                        <div class="group">
+                            <input type="password" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"><span class="span-input">Mật Khẩu</span></i></label>
+                        </div>
+
+
+
+                        <button type="submit" class="giris-yap-buton">Đăng Nhập</button>
+
+
+                        <div class="forgot-and-create tab-menu">
+                            <a class="sifre-hatirlat-link" href="#">Quên mật khẩu?</a>
+                            <a class="hesap-olustur-link" href="#" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                data-bs-target="#modalRegister">Đăng ký ngay</a>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Login-->
+    <!-- Modal Register -->
+    <div class="modal fade" id="modalRegister" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="col-12 login-card">
+                    <form id="register-form" class="col-lg-12">
+
+                        <!-- Logo -->
+                        <div class="col-lg-12 logo-kapsul">
+                            <img width="100" class="logo" src="https://selimdoyranli.com/cdn/material-form/img/logo.png"
+                                alt="Logo" />
+                        </div>
+                        <!-- #Logo-->
+
+                        <div style="clear:both;"></div>
+
+
+                        <div class="group">
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-user"></i><span class="span-input">Tên Đăng Nhập</span></label>
+                        </div>
+
+                        <div class="group">
+                            <input type="email" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="far fa-envelope"></i><span class="span-input">Email</span></label>
+                        </div>
+
+                        <div class="group">
+                            <input type="tel" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-phone-alt"></i><span class="span-input">Số Điện Thoại</span></label>
+                        </div>
+                        <div class="group">
+                            <input type="text" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-map-marker-alt"></i><span class="span-input">Địa Chỉ</span></label>
+                        </div>
+
+                        <div class="group">
+                            <input type="password" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"><span class="span-input">Mật Khẩu</span></i></label>
+                        </div>
+                        <div class="group">
+                            <input type="password" required>
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label><i class="fas fa-lock"></i><span class="span-input">Nhập Lại Mật Khẩu</span></label>
+                        </div>
+                        <button type="submit" class="giris-yap-buton">Đăng Ký</button>
+
+                        <div class="forgot-and-create tab-menu">
+                            <a class="sifre-hatirlat-link" href="#">Quên mật khẩu?</a>
+                            <a class="hesap-olustur-link" href="#" data-bs-toggle="modal" data-bs-dismiss="modal"
+                                data-bs-target="#modalLogin">Đăng nhập ngay</a>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Register -->
+    <div class="jumbotron text-center text-white text-white text-shadow: 1px 1px 1px gray">
+        <h1>Nhóm 16</h1>
+        <p>Hài lòng của bạn - Phương châm chúng tôi</p>
+        <form class="form-check-inline">
+            <div class="input-group"><input type="text" class="form-control" size="50"
+                    placeholder="Nhập tên sản phẩm muốn tìm...">
+                <button type="button" class="btn btn-danger">Tìm kiếm</button>
+            </div>
+
+        </form>
+    </div>
+    <!-- //banner-->
+    <!--/banner-bottom -->
+    <section class="banner-bottom py-5">
+        <div class="container py-md-5">
+            <!-- product right -->
+            <div class="left-ads-display wthree">
+                <div class="row">
+                    <div class="desc1-left col-md-6">
+                        <img src="../img/bag1.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="desc1-right col-md-6 pl-lg-3">
+                        <h3>Lorem ipsum dolor sit amet laoret.</h3>
+                        <h5>Rs. 499 <span>599</span> <a href="#">Click for offer</a></h5>
+                        <div class="available mt-3">
+                            <form action="#" method="post" class="w3pvt-newsletter subscribe-sec">
+                                <input type="email" name="Email" placeholder="Enter your email..." required="">
+                                <button class="btn submit">Check</button>
+
+                            </form>
+                            <span><a href="#">login to save in wishlist </a></span>
+                            <p>Lorem Ipsum has been the industry's standard since the 1500s. Praesent ullamcorper dui
+                                turpis.. </p>
+                        </div>
+                        <div class="share-desc mt-5">
+                            <div class="share text-left">
+                                <h4>Share Product :</h4>
+                                <div class="social-ficons mt-4">
+                                    <ul>
+                                        <li><a href="#"><span class="fab fa-facebook-f f1"></span> Facebook</a></li>
+                                        <li><a href="#"><span class="fab fa-twitter f1"></span> Twitter</a></li>
+                                        <li><a href="#"><span class="fab fa-google f1"></span> Google</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row sub-para-w3pvt my-5">
+
+                    <h3 class="shop-sing">Lorem ipsum dolor sit amet</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl
+                        ullamcorper, molestie blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing
+                        elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.</p>
+                    <p class="mt-3 italic-blue">Consectetur adipisicing elPellentesque vehicula augue eget nisl
+                        ullamcorper, molestie blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing
+                        elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua. Ut enim ad minim
+                        veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.</p>
+                    <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue
+                        eget nisl ullamcorper, molestie blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur
+                        adipisicing elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.</p>
+                </div>
+
+                <div class="response">
+                    <h4>Phản hồi</h4>
+                    <div id="list-comment">
+                        <div class="media response-info">
+                            <div class="media-left response-text-left">
+                                <a href="#">
+                                    <img src="../img/t1.jpg" alt="" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="media-body response-text-right">
+                                <h6>Trần Đức Bo <span><a href="#">hihi@gmail.com</a></h6>
+                                <p>Sản phẩm tốt</p>
+                                <p style="color: #F26649;">Jul 22, 2016</p>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="media response-info">
+                            <div class="media-left response-text-left">
+                                <a href="#">
+                                    <img src="../img/t2.jpg" alt="" height="75" width="75">
+                                </a>
+                            </div>
+                            <div class="media-body response-text-right">
+                                <h6>Trần Dần <span><a href="#">hihi@gmail.com</a></h6>
+                                <p>Nice</p>
+                                <p style="color: #F26649;">Jul 22, 2016</span></p>
+
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="coment-form">
+                    <h4>Để lại đánh giá</h4>
+                    <form id="form-comment" method="GET">
+                        <input type="text" name="name" placeholder="Tên" required="">
+                        <input type="email" name="email" placeholder="Email" required="">
+                        <textarea name="comment" placeholder="Nhập đánh giá" required=""></textarea>
+                        <input type="button"
+                            style="background-color: #fa4b2a;border: none;border-radius: 5px 5px 5px 5px;padding: 5px 5px 5px 5px;color: white;"
+                            id="button-submit" value="Gửi đánh giá">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+                <!--/row-->
+                <h3 class="title-wthree-single my-lg-5 my-4 text-left">Featured Bags</h3>
+                <div class="row shop-wthree-info text-center">
+                    <div class="col-md-3 shop-info-grid text-center mt-4">
+                        <div class="product-shoe-info shoe">
+                            <div class="men-thumb-item">
+                                <img src="../img/b1.jpg" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="item-info-product">
+                                <h4>
+                                    <a href="single.html">Messenger Bag </a>
+                                </h4>
+
+                                <div class="product_price">
+                                    <div class="grid-price">
+                                        <span class="money"><span class="line">$799</span> $675.00</span>
+                                    </div>
+                                </div>
+                                <ul class="stars">
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-star-o" aria-hidden="true"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 shop-info-grid text-center mt-4">
+                        <div class="product-shoe-info shoe">
+                            <div class="men-thumb-item">
+                                <img src="../img/b2.jpg" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="item-info-product">
+                                <h4>
+                                    <a href="single.html">Shoulder Bag (Pink) </a>
+                                </h4>
+
+                                <div class="product_price">
+                                    <div class="grid-price">
+                                        <span class="money"><span class="line">$799</span> $675.00</span>
+                                    </div>
+                                </div>
+                                <ul class="stars">
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fas fa-star-half" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fas fa-star-half" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="far fa-star" aria-hidden="true"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 shop-info-grid text-center mt-4">
+                        <div class="product-shoe-info shoe">
+                            <div class="men-thumb-item">
+                                <img src="../img/b3.jpg" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="item-info-product">
+                                <h4>
+                                    <a href="single.html">Sling Bag </a>
+                                </h4>
+
+                                <div class="product_price">
+                                    <div class="grid-price">
+                                        <span class="money"><span class="line">$599</span> $475.00</span>
+                                    </div>
+                                </div>
+                                <ul class="stars">
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fas fa-star-half" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fas fa-star-half" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="far fa-star" aria-hidden="true"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 shop-info-grid text-center mt-4">
+                        <div class="product-shoe-info shoe">
+                            <div class="men-thumb-item">
+                                <img src="../img/b4.jpg" class="img-fluid" alt="">
+
+                            </div>
+                            <div class="item-info-product">
+                                <h4>
+                                    <a href="single.html">Tote (Blue) </a>
+                                </h4>
+
+                                <div class="product_price">
+                                    <div class="grid-price">
+                                        <span class="money"><span class="line">$799</span> $675.00</span>
+                                    </div>
+                                </div>
+                                <ul class="stars">
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fa fa-star" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fas fa-star-half" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="fas fa-star-half" aria-hidden="true"></span></a></li>
+                                    <li><a href="#"><span class="far fa-star" aria-hidden="true"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--//row-->
+
+            </div>
+        </div>
+    </section>
+    <!-- /banner-bottom -->
+    <!-- footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row f-bg-w3l">
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h2>Thông Tin <span>Liện Hệ</span></h2>
+                    <ul class="con_inner_text">
+                        <li><span class="fa fa-map-marker" aria-hidden="true"></span>12 Nguyễn Văn Bảo, Phường 4, Gò
+                            Vấp, Thành phố Hồ Chí
+                            Minh</li>
+                        <li><span class="far fa-envelope f1" aria-hidden="true"></span> <a
+                                href="mailto:info@example.com">info@example.com</a></li>
+                        <li><span class="fa fa-phone" aria-hidden="true"></span> +1234 567 567</li>
+                    </ul>
+
+                    <ul class="social_agileinfo">
+                        <li><a href="#" class="w3_facebook"><i class="fab fa-facebook-f f1"></i></a></li>
+                        <li><a href="#" class="w3_twitter"><i class="fab fa-twitter f1"></i></a></li>
+                        <li><a href="#" class="w3_instagram"><i class="fab fa-instagram f1"></i></a></li>
+                        <li><a href="#" class="w3_google"><i class="fab fa-google-plus f1"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h2>Theo Dõi <span>Bản Tin</span></h2>
+                    <p>Bằng cách đăng ký vào danh sách gửi thư của chúng tôi, bạn sẽ luôn nhận được tin tức mới nhất từ
+                        ​​chúng tôi.</p>
+                    <form action="#" method="post">
+                        <input type="email" name="Email" placeholder="Nhập địa chỉ email của bạn..." required="">
+                        <button class="btn1"><i class="far fa-envelope f1" aria-hidden="true"></i></button>
+                        <div class="clearfix"> </div>
+                    </form>
+                </div>
+                <div class="col-md-4 w3layouts_footer_grid">
+                    <h3>Đối Tác <span>Hiện Tại</span></h3>
+                    <ul class="con_inner_text midimg">
+                        
+                        <li><a href="#"><img height="50" width="50" src="../img/html5.jpg" alt="" class="img-responsive" /></a></li>
+                        <li><a href="#"><img height="50" width="50" src="../img/hyindai.png" alt="" class="img-responsive" /></a></li>
+                        <li><a href="#"><img height="50" width="50" src="../img/firefox.png" alt="" class="img-responsive" /></a></li>
+                        
+                    </ul>
+
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <p class="copyright">© 2021 Travel' Camera. All Rights Reserved | Cover by <a href="../html/intro.html" target="_blank">Thanh Thi - Minh Tâm</a></p>
+    </div>
+    <!-- footer -->
+    <script>
+        $(window).scroll(function () {
+            if ($(document).scrollTop() > 50) {
+                $('nav').addClass('shrink');
+            } else {
+                $('nav').removeClass('shrink');
+            }
+        });
+    </script>
+    <!-- <script src="../js/SmoothScroll.min.js"></script> -->
+    <!-- <script src="../js/easing.js"></script>
+    <script src="../js/look.js"></script>
+    <script src="../js/carousel.js"></script> -->
+</body>
+
+</html>

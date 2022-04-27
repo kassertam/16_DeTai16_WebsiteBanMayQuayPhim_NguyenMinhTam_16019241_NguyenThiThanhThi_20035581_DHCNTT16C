@@ -1,0 +1,966 @@
+.jumbotron {
+    padding: 12rem 2rem;
+    margin-bottom: 2rem;
+    /* background-color: var(--bs-light); */
+    border-radius: .3rem;
+    background-image: url('../img/header_home.jpg');
+    text-shadow: 6px 5px 3px gray;
+}
+
+.form-control {
+    margin-right: 10px;
+}
+.bg-grey {
+    background-color: #f6f6f6;
+}
+
+.container-fluid {
+    padding: 60px 50px;
+}
+
+.logo {
+    font-size: 200px;
+}
+.slideanim{
+    visibility: hidden;
+}
+.slide{
+    animation-name: slide;
+    -webkit-animation-name:slide ;
+    animation-duration: 1s;
+    -webkit-animation-duration:1s ;
+    visibility: visible;
+}
+@keyframes slide{
+    0%{
+        opacity: 0;
+        transform: translateY(70%);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0%);
+    }
+}
+@-webkit-keyframes slide{
+    0%{
+        opacity: 0;
+        transform: translateY(70%);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0%);
+    }
+}
+@media screen {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+    }
+}
+@media all and (min-width: 992px) {
+	.dropdown-menu li{ position: relative; 	}
+	.nav-item .submenu{ 
+		display: none;
+		position: absolute;
+		left:100%; top:-7px;
+	}
+	.nav-item .submenu-left{ 
+		right:100%; left:auto;
+	}
+	.dropdown-menu > li:hover{ background-color: #f1f1f1 }
+	.dropdown-menu > li:hover > .submenu{ display: block; }
+}	
+/* ============ desktop view .end// ============ */
+
+/* ============ small devices ============ */
+@media (max-width: 991px) {
+  .dropdown-menu .dropdown-menu{
+      margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
+  }
+}
+/* Sản phẩm Trang chủ */
+.team-grid {
+    position: relative;
+}
+
+.team-text h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 0.3em;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.56);
+    width: 96%;
+    margin: 0 auto;
+    padding: 13px 0;
+}
+.team-text p {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 0.3em;
+    letter-spacing: 2px;
+    background: rgba(0, 0, 0, 0.56);
+    width: 96%;
+    margin: 0 auto;
+    padding: 13px 0;
+}
+.team-text h5 {
+    font-size: 1em;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.team-grid img {
+    border: 4px double #000;
+}
+
+.caption {
+    opacity: 0;
+    top: 0%;
+    position: absolute;
+    width: 90%;
+    text-align: center;
+    transition: 0.5s all ease;
+    -webkit-transition: 0.5s all ease;
+    -moz-transition: 0.5s all ease;
+    -o-transition: 0.5s all ease;
+    -ms-transition: 0.5s all ease;
+}
+
+.team-grid:hover .caption {
+    display: block;
+    top: 33%;
+    opacity: 1;
+}
+
+.caption ul {
+    padding: 1em 0 .5em;
+}
+
+.caption ul li {
+    list-style-type: none;
+    display: inline-block;
+}
+
+.caption ul li:nth-child(2) {
+    margin: 0 0.3em;
+}
+
+.caption ul li a i {
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+    line-height: 2.2;
+}
+
+.caption ul li a i:hover {
+    transform: rotateY(360deg);
+    transition: .5s all;
+}
+
+.caption ul li a i.f1 {
+    background: gray;
+}
+
+
+
+
+@media(max-width: 1080px) {
+    .team-text h4 {
+        font-size: 22px;
+        letter-spacing: 1px;
+        padding: 11px 0;
+    }
+
+    .caption {
+        width: 88%;
+    }
+}
+
+@media(max-width: 991px) {
+    .caption {
+        width: 86%;
+    }
+}
+
+@media(max-width: 736px) {
+    .caption {
+        width: 89.5%;
+    }
+}
+
+@media(max-width: 480px) {
+    .caption {
+        width: 87.5%;
+    }
+}
+
+@media(max-width: 440px) {
+    .caption {
+        width: 86.5%;
+    }
+}
+
+@media(max-width: 414px) {
+    .team-text h4 {
+        font-size: 20px;
+        padding: 9px 0;
+    }
+
+    .caption {
+        width: 85.5%;
+    }
+
+    .caption ul li a i {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 384px) {
+    .team-grid {
+        flex: 0 0 100%;
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .caption {
+        width: 85.5%;
+        left: 7.5%;
+    }
+
+    .team-grid:nth-child(2) {
+        margin-top: 1.5em;
+    }
+}
+
+@media(max-width: 320px) {
+    .caption {
+        width: 91.5%;
+        left: 4.5%;
+    }
+
+}
+/* Sản phẩm Trang chủ */
+h3.title-wthree {
+    font-size: 18px;
+    color: #7b7b7b;
+    letter-spacing: 2px;
+}
+
+h3.title-wthree span {
+    display: block;
+    font-size: 42px;
+    color: #fb4386;
+}
+a.button-3 {
+    background: linear-gradient(to right bottom, #fb4386, #ec4fae, #ce63d0, #a377ea, #6488f9);
+    padding: 14px 28px;
+}
+
+a.button-3:hover {
+    opacity: .8;
+    background: linear-gradient(to right bottom, #fb4386, #ec4fae, #ce63d0, #a377ea, #6488f9);
+    color: #fff;
+}
+.button-style {
+    padding: 11px 28px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 100px;
+    border: 2px solid #fff;
+    background: transparent;
+}
+
+.button-style:hover {
+    background: #fff;
+    color: #000;
+}
+/* middle section */
+
+
+.middle-w3l {
+    background-image: url('../img/header_home.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+}
+
+.middle-w3l h3 {
+    color: #fff;
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.62);
+}
+
+.middle-w3l p {
+    color: #ececec;
+    max-width: 600px;
+}
+
+/* //middle section */
+/*-- footer --*/
+
+.footer {
+    background: #0b0c11;
+}
+.f-bg-w3l {
+    padding: 5em 0;
+}
+.w3layouts_footer_grid h2,
+.w3layouts_footer_grid h3 {
+    font-size: 1.5em;
+    color: #fff;
+    position: relative;
+    margin-bottom: 1.5em;
+    letter-spacing: 2px;
+}
+h3.heading-agileinfo.white-w3ls {
+    color: #ec4fae;
+    font-size: 35px;
+    line-height: 48px;
+}
+.more-button a {
+    font-size: 15px;
+    background: #ec4fae;
+    color: #fff;
+    padding: 8px 25px;
+    display: inline-block;
+    margin-top: 2em;
+}
+.more-button a:hover{
+    background: #000;
+}
+ul.links li {
+    list-style: none;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.w3layouts_footer_grid h2 span,
+.w3layouts_footer_grid h3 span {
+    color: #ec4fae;
+}
+
+ul.links li a {
+    color: #fff;
+}
+
+.social_agileinfo li {
+    display: inline-block;
+}
+
+.social_agileinfo li a {
+    width: 40px;
+    height: 40px;
+    display: block;
+    border: 1px solid #fff;
+    text-align: center;
+    color: #fff;
+}
+
+.social_agileinfo li a i {
+    font-size: 1em;
+    line-height: 2.4em;
+}
+
+.w3_facebook:hover {
+    border: 1px solid #3b5998;
+    background: #3b5998;
+}
+
+.w3_twitter:hover {
+    border: 1px solid #1da1f2;
+    background: #1da1f2;
+}
+
+.w3_instagram:hover {
+    border: 1px solid #833ab4;
+    background: #833ab4;
+}
+
+.w3_google:hover {
+    border: 1px solid #ec4fae;
+    background: #ec4fae;
+}
+
+.w3l_footer_nav {
+    margin: 3em 0 3em;
+}
+
+.w3l_footer_nav li {
+    display: inline-block;
+    margin-right: 4em;
+}
+
+.w3l_footer_nav li a {
+    color: #fff;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+}
+
+.w3l_footer_nav li a:hover,
+.w3l_footer_nav li a.active {
+    color: #ec4fae;
+}
+.w3layouts_footer_grid p {
+    font-size: 1em;
+    line-height: 2em;
+    margin-bottom: 2em;
+    color: #bfbfbf;
+}
+
+p.copyright {
+    color: #fff;
+    line-height: 1.8em;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 0em;
+    background: #0e0e13;
+    padding: 10px 0;
+}
+
+p.copyright a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+p.copyright a:hover {
+    color: #ec4fae;
+}
+
+.w3layouts_footer_grid form {
+    border: 1px solid #fff;
+    width: 100%;
+}
+
+.w3layouts_footer_grid input[type="email"] {
+    outline: none;
+    padding: 15px 15px;
+    color: #fff;
+    font-size: 14px;
+    width: 88%;
+    border: none;
+    background: rgba(0, 0, 0, 0.22);
+    letter-spacing: 2px;
+}
+
+button.btn1 {
+    color: #fff;
+    border: none;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    background: #ec4fae;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    float: right;
+    width: 12%;
+}
+
+ul.con_inner_text li {
+    list-style-type: none;
+    color: #bfbfbf;
+    font-size: 14px;
+    margin-bottom: 17px;
+}
+
+ul.con_inner_text li label {
+    display: block;
+    margin-left: 1.7em;
+}
+
+ul.con_inner_text span {
+    margin-right: 13px;
+}
+
+ul.con_inner_text li a {
+    color: #bfbfbf;
+}
+
+ul.con_inner_text li label {
+    color: #bfbfbf;
+    margin-right: 1em;
+    font-weight: 400!important;
+}
+
+ul.con_inner_text.midimg li {
+    display: inline-block;
+    /* float: left; */
+    width: 22%;
+    margin: 6px;
+}
+/* footer */
+/* Modal */
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #eee;
+}
+
+.login-card {
+    min-height: 100vh;
+    background-image: url('https://selimdoyranli.com/cdn/material-form/img/bg.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    -wenkit-background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+    z-index: 2;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-family: roboto !important;
+}
+
+.login-card:after {
+    background: linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    /* Login Card Arkaplan Rengi */
+
+    background: -webkit-linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    /* Login Card Arkaplan Rengi */
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    opacity: 0.8;
+    z-index: 3;
+}
+
+.login-card>form {
+    z-index: 4;
+    position: relative;
+    padding: 0px 25px;
+    width: 100%;
+}
+
+.logo-kapsul {
+    text-align: center;
+    position: relative;
+    opacity: 0.8;
+}
+
+.logo {
+    height: auto;
+    padding: 50px 0px;
+}
+
+/* form başlangıç stiller ------------------------------- */
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.group input {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    color: #eee;
+}
+
+.group input:focus {
+    outline: none;
+}
+
+/* LABEL ======================================= */
+
+.group label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 5px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active durum */
+
+.group input:focus~label,
+input:valid~label {
+    top: -20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* BOTTOM BARS ================================= */
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before,
+.bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+/* active durum bar */
+
+.group input:focus~.bar:before,
+.group input:focus~.bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+
+.highlight {
+    position: absolute;
+    height: 0%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active durum */
+
+.group input:focus~.highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* form animasyon ================ */
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@-moz-keyframes inputHighlighter {
+    from {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+.input-ikon {
+    font-size: 25px !important;
+    position: relative;
+}
+
+.input-sifre-ikon {
+    font-size: 22px !important;
+    position: relative;
+}
+
+.span-input {
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+}
+.add-card-buton{
+    border: none;
+    width: 100%;
+    background:  rgb(233, 30, 99);
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #eee;
+    font-family: roboto;
+    font-weight: 100;
+    padding: 10px;
+    border-radius: 3px;
+    outline: none;
+    opacity: 0.8;
+}
+.giris-yap-buton,
+.kayit-ol-buton,
+.sifre-hatirlat-buton {
+    border: none;
+    width: 100%;
+    background: linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    background: -webkit-linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #eee;
+    font-family: roboto;
+    font-weight: 100;
+    padding: 10px;
+    border-radius: 3px;
+    outline: none;
+    opacity: 0.8;
+}
+
+.forgot-and-create {
+    margin: 20px 0px;
+}
+
+.forgot-and-create a {
+    color: #bbb;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 100;
+    margin-right: 10px;
+}
+
+/* Geçiş Links Forgot and Create */
+
+.zaten-hesap-var-link {
+    color: #bbb;
+    font-size: 14px;
+    padding: 20px 0px;
+    text-decoration: none;
+    display: block;
+}
+.w3l-content-6 .content-6-mian {
+  background: var(--bg-color);
+}
+
+.w3l-content-6 .content-info-in {
+  align-items: center;
+}
+
+.w3l-content-6 .content-6-mian h4 {
+  font-size: 22px;
+  line-height: 32px;
+  color: #101923;
+  opacity: 0.9;
+}
+
+.w3l-content-6 .content-info-in p {
+  line-height: 25px;
+  font-size: 15px;
+}
+
+
+@media (max-width: 1440px) {
+  .w3l-content-6 .counter-6-inf-left h4 {
+    line-height: 70px;
+    font-size: 50px;
+    width: 60%;
+  }
+}
+
+@media (max-width:991px) {}
+
+@media (max-width:767px) {}
+
+@media (max-width: 668px) {
+  .w3l-content-6 .content-info-in p {
+    line-height: 25px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width:600px) {
+  .w3l-content-6 .content-6-mian h4 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+/* comment */
+.response h4 {
+    color: #fa4b2a;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 1.5em;
+}
+.coment-form input[type="text"] {
+    display: block;
+    background: none;
+    color: #777;
+    border: 1px solid #ddd;
+    width: 70%;
+    margin-bottom: 5px;
+    outline: none;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 13px 15px;
+	font-family: 'Open Sans', sans-serif;
+}
+.coment-form input[type="submit"] {
+    background: #fa4b2a;
+    border: 1px solid #fa4b2a;
+    padding: .8em 0;
+    width: 30%;
+    margin-top: .5em;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    outline: none;
+    transition: .5s all;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    -o-transition: .5s all;
+    -ms-transition: .5s all;
+	font-family: 'Open Sans', sans-serif;
+	text-transform:uppercase;
+}
+.coment-form input[type="submit"]:hover{
+   background:#303030;
+    border: 1px solid #303030;
+}
+.coment-form input[type="email"] {
+    background: none;
+    color: #777;
+    border: 1px solid #ddd;
+    width: 70%;
+    margin-bottom: 5px;
+    outline: none;
+    font-size: 13px;
+        font-weight: 400;
+    padding: 13px 15px;
+	font-family: 'Open Sans', sans-serif;
+}
+.coment-form textarea {
+    background: none;
+    color: #777;
+    border: 1px solid #ddd;
+    width: 100%;
+    display: block;
+    height: 150px;
+    outline: none;
+    font-size: 13px;
+       font-weight: 400;
+    resize: none;
+    padding: 13px 15px;
+	font-family: 'Open Sans', sans-serif;
+}
+.coment-form h4 {
+ color: #fa4b2a;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 1.5em;
+}
+.media-left.response-text-left {
+    float: left;
+    width: 5%;
+}
+.response-text-right p {
+    color: #777;
+    font-size:0.9em;
+    margin: 0 0 1em;
+	line-height:1.9em;
+}
+.media-body.response-text-right ul li {
+    color: #F26649;
+    font-size: 0.9em;
+    display: inline-block;
+        font-weight: 400;
+        margin-right: 0px;
+}
+.media-body.response-text-right ul li a {
+    color: #000000;
+    font-size: 1em;
+    font-weight: 700;
+    display: block;
+    margin-top: 6px;
+    margin-left: 0px;
+}
+.media-body.response-text-right {
+    float: right;
+    width: 90%;
+    text-align: left;
+}
+.media-left.response-text-left h5 a {
+    color: #4A245E;
+    font-weight: 400;
+    line-height: 2em;
+}
+.coment-form {
+    margin-top: 2em;
+	padding-bottom:1em;
+}
+.media-left.response-text-left a img {
+    border-radius:50%;
+	-o-border-radius:50%;
+	-webkit-border-radius:50%;
+	-moz-border-radius:50%;
+	-ms-border-radius:50%;
+}
+.media-body.response-text-right ul li a:hover {
+    text-decoration: none;
+    color: #f26649;
+}
+@media (max-width:1000px) {
+    .media-body.response-text-right {
+        float: right;
+        width: 80%;
+        text-align: left;
+    }
+  }
+  @media (max-width:700px) {
+    .media-body.response-text-right {
+        float: right;
+        width: 70%;
+        text-align: left;
+    }
+  }
